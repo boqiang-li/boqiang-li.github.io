@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.boqiangli.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":null,"post_body":null,"coll_header":null,"sidebar":"fadeIn"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"algolia":{"appID":"ACZSSY9M5F","apiKey":"f9ad8b3b4fbcdbfe16684e6ffb28b587","indexName":"hexo","hits":{"per_page":10}}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="The Node.js, Hexo and Next themes used in previous blogs are outdated, causing a lot of compatibility issues. So I reconfigured my blog and this post records my configuration and development process">
+<meta property="og:type" content="article">
+<meta property="og:title" content="New Blog, New Beginning">
+<meta property="og:url" content="https://www.boqiangli.com/post/8f9c2317/index.html">
+<meta property="og:site_name" content="Boqiang&#39;s Blog">
+<meta property="og:description" content="The Node.js, Hexo and Next themes used in previous blogs are outdated, causing a lot of compatibility issues. So I reconfigured my blog and this post records my configuration and development process">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.boqiangli.com/post/8f9c2317//15c49db55792dcbcf6f29defb40871a7.jpg">
+<meta property="article:published_time" content="2022-10-30T07:55:01.000Z">
+<meta property="article:modified_time" content="2022-10-30T08:00:45.090Z">
+<meta property="article:author" content="Boqiang">
+<meta property="article:tag" content="Blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.boqiangli.com/post/8f9c2317//15c49db55792dcbcf6f29defb40871a7.jpg">
+
+
+<link rel="canonical" href="https://www.boqiangli.com/post/8f9c2317/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.boqiangli.com/post/8f9c2317/","path":"/post/8f9c2317/","title":"New Blog, New Beginning"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>New Blog, New Beginning | Boqiang's Blog</title>
+  
+
+
+
+
+
+<link rel="dns-prefetch" href="waline.boqiangli.com">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Boqiang's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/Tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/Categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#install-hexo"><span class="nav-number">1.</span> <span class="nav-text">Install Hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#using-next-theme"><span class="nav-number">2.</span> <span class="nav-text">Using Next theme</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#modify-blog-image-link"><span class="nav-number">3.</span> <span class="nav-text">Modify blog image link</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#blog-appearance-modification"><span class="nav-number">4.</span> <span class="nav-text">Blog appearance modification</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#modify-hyperlink-color"><span class="nav-number">4.1.</span> <span class="nav-text">Modify hyperlink color</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-have-xx-posts-in-total"><span class="nav-number">4.2.</span> <span class="nav-text">Delete have XX posts in
+total</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-year-and-date-from-archives"><span class="nav-number">4.3.</span> <span class="nav-text">Delete year and date from
+archives</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#delete-powered-by-hexo"><span class="nav-number">4.4.</span> <span class="nav-text">Delete powered by Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set-posts-tags-from-to-tag-icon"><span class="nav-number">4.5.</span> <span class="nav-text">Set posts tags from # to tag
+icon</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set-categories-tags-etc."><span class="nav-number">4.6.</span> <span class="nav-text">Set categories, tags, etc.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#turn-off-motion"><span class="nav-number">4.7.</span> <span class="nav-text">Turn off motion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#enable-article-loading-progress-bar"><span class="nav-number">4.8.</span> <span class="nav-text">Enable article loading
+progress bar</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#enable-math-formulas"><span class="nav-number">5.</span> <span class="nav-text">Enable math formulas</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#add-search-function"><span class="nav-number">6.</span> <span class="nav-text">Add search function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#use-local-search"><span class="nav-number">6.1.</span> <span class="nav-text">Use local search</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#use-algolia-to-search"><span class="nav-number">6.2.</span> <span class="nav-text">Use Algolia to search</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#add-comment-system"><span class="nav-number">7.</span> <span class="nav-text">Add comment system</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#set-up-ftp-synchronization"><span class="nav-number">8.</span> <span class="nav-text">Set up FTP synchronization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#force-access-to-blog-with-ssh"><span class="nav-number">9.</span> <span class="nav-text">Force access to blog with
+SSH</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#conclusion"><span class="nav-number">10.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Boqiang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/Tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.boqiangli.com/post/8f9c2317/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Boqiang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Boqiang's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="New Blog, New Beginning | Boqiang's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          New Blog, New Beginning
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-10-30 03:55:01 / Modified: 04:00:45" itemprop="dateCreated datePublished" datetime="2022-10-30T03:55:01-04:00">2022-10-30</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Comments: </span>
+  
+    <a title="waline" href="/post/8f9c2317/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/post/8f9c2317/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-item" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="waline-pageview-count" data-path="/post/8f9c2317/"></span>
+    </span>
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>The Node.js, Hexo and Next themes used in previous blogs are
+outdated, causing a lot of compatibility issues. So I reconfigured my
+blog and this post records my configuration and development process.</p>
+<span id="more"></span>
+<h1 id="install-hexo">Install Hexo</h1>
+<ol type="1">
+<li><p>Install Node.js, use the command <code>node --version</code> to
+view the installed version, the version I installed is 16.17.0.</p></li>
+<li><p>Install Hexo using <code>npm install -g hexo-cli</code>.</p></li>
+<li><p>Use the following commands to initialize and complete the most
+basic website building.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">hexo init &lt;BlogDir&gt;</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> &lt;folder&gt;</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm install</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>My Hexo version is 6.3.0. For more detailed commands, please refer to
+<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/index.html">This Doc</a>.</p>
+<h1 id="using-next-theme">Using Next theme</h1>
+<p>There are currently three versions of the hexo next theme: <a target="_blank" rel="noopener" href="https://github.com/iissnan/hexo-theme-next">the earliest
+version</a>, <a target="_blank" rel="noopener" href="https://github.com/theme-%20next/hexo-theme-next">the second
+version</a>, these two versions have been stopped maintenance, and the
+<a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-theme-next">latest
+version</a> is still being maintained. Please refer to <a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-theme-next/issues/4">this
+doc</a> for the relationship between the three versions.</p>
+<p>All subsequent configurations are based on the <a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-theme-next">latest
+version</a>.</p>
+<ol type="1">
+<li><p>Download and install the Next theme</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">   $ </span><span class="language-bash"><span class="built_in">cd</span> hexo-site</span></span><br><span class="line"><span class="meta prompt_">   $ </span><span class="language-bash">git <span class="built_in">clone</span> https://github.com/next-theme/hexo-theme-next themes/next</span></span><br><span class="line">   ````</span><br><span class="line"></span><br><span class="line">2. Set `theme: next` in `Hexo site __config.yml` to enable the Next theme.</span><br><span class="line"></span><br><span class="line">3. Set `scheme: Pisces` in `Next Theme __config.yml`(You can use other scheme).</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Use abbrlink</span></span><br><span class="line"></span><br><span class="line">Hexo uses the Markdown file name as the link by default. If the file name has Chinese, Hexo need to escape the it. In addition, it may lead to a very long link . Modifying the article title causes the article title to not match the file name. Modifying the file name will cause the article link to be modified. None of these above is helpful for search engines to search your blog.</span><br><span class="line"></span><br><span class="line">So I hash the filename and use the hash as the link to the article. In this way, the article link will never change, which is convenient for search engines to search.</span><br><span class="line"></span><br><span class="line">Install `hexo-abbrlink`:</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm install hexo-abbrlink --save</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>In <code>Hexo site __config.yml</code> set:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">/post/:abbrlink/</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># abbrlink config</span></span><br><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line">  <span class="attr">alg:</span> <span class="string">crc32</span>  <span class="comment"># crc16(default) and crc32</span></span><br><span class="line">  <span class="attr">rep:</span> <span class="string">hex</span>    <span class="comment"># dec(default) and hex</span></span><br></pre></td></tr></table></figure>
+<p>Please refer to <a target="_blank" rel="noopener" href="https://github.com/rozbo/hexo-abbrlink">this
+doc</a> for more information.</p>
+<h1 id="modify-blog-image-link">Modify blog image link</h1>
+<p>When using <code>hexo-abbrlink</code>, the <code>address</code> in
+the default Markdown syntax for adding images
+<code>![image description](address/image.jpg)</code> is not converted,
+resulting in the image not being displayed. Referring to the previous
+<code>hexo-asset-image</code> plugin, I wrote a new plugin to solve this
+problem.</p>
+<p>Install the plugin:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/littlesevenmo/hexo-asset-image2.git --save</span><br></pre></td></tr></table></figure>
+<p>in the <code>Hexo site __config.yml</code> set:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/</span></span><br></pre></td></tr></table></figure>
+<p>In this way, your blog's post structure will look like this:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">YourBlogDoc</span><br><span class="line">├── image.jpg</span><br><span class="line">YourBlogDoc.md</span><br></pre></td></tr></table></figure>
+<p>Insert image <code>image.jpg</code> by
+<code>![image description](YourBlogDoc/image.jpg)</code> or
+<code>![image description](D:/&lt;Absolute_Addr&gt;/YourBlogDoc/image.jpg)</code>.
+Then use <code>hexo clean</code>, <code>hexo g</code>,
+<code>hexo server</code> to preview.</p>
+<h1 id="blog-appearance-modification">Blog appearance modification</h1>
+<h2 id="modify-hyperlink-color">Modify hyperlink color</h2>
+<p>In
+<code>&lt;BlogDir&gt;/themes/next/source/css/_common/components/post/post-body.styl</code>,
+add:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.post-body p a&#123;</span><br><span class="line">color: #0593d3;</span><br><span class="line">border-bottom: none;</span><br><span class="line">border-bottom: 1px solid #0593d3;</span><br><span class="line">&amp;:hover &#123;</span><br><span class="line">color: #fc6423;</span><br><span class="line">border-bottom: none;</span><br><span class="line">border-bottom: 1px solid #fc6423;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="delete-have-xx-posts-in-total">Delete have XX posts in
+total</h2>
+<p>In
+<code>&lt;BlogDir&gt;/themes/next/source/css/_common/components/post/post-collapse.styl</code>,
+add <code>display: none</code> in <code>.collection-title</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.collection-title &#123;</span><br><span class="line">    display:none;</span><br><span class="line">    ....</span><br></pre></td></tr></table></figure>
+<h2 id="delete-year-and-date-from-archives">Delete year and date from
+archives</h2>
+<p>In
+<code>&lt;BlogDir&gt;/themes/next/source/css/_common/components/post/post-collapse.styl</code>,
+add <code>display: none</code> in <code>.collection-year</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.collection-year &#123;</span><br><span class="line">    display:none;</span><br></pre></td></tr></table></figure>
+<p>In
+<code>&lt;BlogDIr&gt;/themes/next/layout/_macro/post-collapse.njk</code>,
+delete:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;post-meta-container&quot;&gt;</span><br><span class="line">     &lt;time itemprop=&quot;dateCreated&quot;</span><br><span class="line">           datetime=&quot;&#123;&#123; moment(post.date).format() &#125;&#125;&quot;</span><br><span class="line">           content=&quot;&#123;&#123; date(post.date, config.date_format) &#125;&#125;&quot;&gt;</span><br><span class="line">       &#123;&#123; date(post.date, &#x27;MM-DD&#x27;) &#125;&#125;</span><br><span class="line">     &lt;/time&gt;</span><br><span class="line">   &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="delete-powered-by-hexo">Delete powered by Hexo</h2>
+<p>In <code>Hexo site __config.yml</code>, set:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">footer</span></span><br><span class="line">	<span class="attr">powered:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h2 id="set-posts-tags-from-to-tag-icon">Set posts tags from # to tag
+icon</h2>
+<p>In <code>Hexo site __config.yml</code>, set
+<code>tag_icon: true</code></p>
+<h2 id="set-categories-tags-etc.">Set categories, tags, etc.</h2>
+<ol type="1">
+<li><p>In <code>Next Theme __config.yml</code>, set:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-user</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/Tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/Categories/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-th</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span></span><br><span class="line">  <span class="comment">#schedule: /schedule/ || fa fa-calendar</span></span><br><span class="line">  <span class="comment">#sitemap: /sitemap.xml || fa fa-sitemap</span></span><br><span class="line">  <span class="comment">#commonweal: /404/ || fa fa-heartbeat</span></span><br></pre></td></tr></table></figure></li>
+<li><p>Create a catalog file:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &lt;BlodDir&gt;</span><br><span class="line">$ hexo new page categories</span><br></pre></td></tr></table></figure>
+<p>In <code>&lt;BlogDir&gt;/source/categories/index.md</code>, add:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type: &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+<p>to article header.</p></li>
+<li><p>In this way, the content in the page is Category content. Tag is
+the same.</p></li>
+<li><p>Add the follows to the head of the blog post:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">categories: </span><br><span class="line">- Your categorie</span><br><span class="line">tags:</span><br><span class="line">- Tag1</span><br><span class="line">- Tag2</span><br></pre></td></tr></table></figure>
+<p>Then you set categories and tags for articles.</p></li>
+</ol>
+<p>AboutMe content can be written in the About page.</p>
+<h2 id="turn-off-motion">Turn off motion</h2>
+<p>In <code>Next Theme __config.yml</code>, set:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">motion:</span><br><span class="line">  enable: false</span><br></pre></td></tr></table></figure>
+<p>You can also modify other motion configurations in
+<code>motion</code>.</p>
+<h2 id="enable-article-loading-progress-bar">Enable article loading
+progress bar</h2>
+<p>In <code>Next Theme __config.yml</code>, set:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">pace:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h1 id="enable-math-formulas">Enable math formulas</h1>
+<p>The syntax of the original math formula rendering plugin is not
+compatible with Markdown syntax, so I use pandoc for rendering.</p>
+<ol type="1">
+<li><p>Install <a target="_blank" rel="noopener" href="https://pandoc.org/">pandoc</a>.</p></li>
+<li><p>Uninstall the original math formula editing plugin</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm uninstall hexo-renderer-marked</span><br></pre></td></tr></table></figure></li>
+<li><p>Install the plugin using pandoc:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-pandoc</span><br></pre></td></tr></table></figure></li>
+<li><p>In <code>Next Theme __config.yml</code>, set the follows to
+enable mathjax:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mathjax:</span><br><span class="line">    enable: true</span><br><span class="line">    # Available values: none | ams | all</span><br><span class="line">    tags: none</span><br></pre></td></tr></table></figure></li>
+<li><p>Add the follows in the head of the blog post you want to render
+with Mathjax:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mathjax: true</span><br></pre></td></tr></table></figure></li>
+<li><p>In <code>Hexo site __config.yml</code>, set:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pandoc:</span><br><span class="line">  pandoc_path: C:/Program Files/Pandoc/pandoc.exe   # Your real program address</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="add-search-function">Add search function</h1>
+<h2 id="use-local-search">Use local search</h2>
+<ol type="1">
+<li><p>Install the search plugin:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure></li>
+<li><p>In <code>Hexo site __config.yml</code>, set:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  content: true</span><br><span class="line">  format: html</span><br></pre></td></tr></table></figure></li>
+<li><p>In <code>Next Theme __config.yml</code>, set:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>When clicking search, the index file <code>search.xml</code> needs to
+be downloaded and then searched.</p>
+<p>Pros:</p>
+<ol type="1">
+<li>The index file <code>search.xml</code> coexists with the blog, which
+is stable and reliable.</li>
+<li>No search restrictions.</li>
+</ol>
+<p>Cons:</p>
+<ol type="1">
+<li>When the number of blogs is large, the <code>search.xml</code> file
+will be large and slow to load.</li>
+</ol>
+<p>I use this search method on my Chinese site.</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-generator-searchdb">Reference</a></p>
+<h2 id="use-algolia-to-search">Use Algolia to search</h2>
+<p>There are two plugins that support Algolia search:
+<code>hexo-algolia</code> and <code>hexo-algoliasearch</code>, the
+former can only search article titles, while the latter can search
+article content. I use the latter for the English site.</p>
+<ol type="1">
+<li><p>Create an <code>index</code> in <a target="_blank" rel="noopener" href="https://www.algolia.com/">Algolia</a></p></li>
+<li><p>Record <code>Application ID</code>,
+<code>Search-Only API Key</code>, <code>Admin Key</code></p></li>
+<li><p>Install
+<code>npm install hexo-algoliasearch --save</code></p></li>
+<li><p>In <code>Hexo site __config.yml</code>, set:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">algolia:</span></span><br><span class="line">  <span class="attr">appId:</span> <span class="string">&quot;Your App ID&quot;</span></span><br><span class="line">  <span class="attr">apiKey:</span> <span class="string">&quot;Your Search Only API Key&quot;</span></span><br><span class="line">  <span class="attr">adminApiKey:</span> <span class="string">&quot;40321c7c207e7f73b63a19aa24c4761b&quot;</span></span><br><span class="line">  <span class="attr">chunkSize:</span> <span class="number">5000</span></span><br><span class="line">  <span class="attr">indexName:</span> <span class="string">&quot;Your Index Name&quot;</span></span><br><span class="line">  <span class="attr">fields:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">content:strip:truncate,0,500</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">excerpt:strip</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">gallery</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">permalink</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">photos</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">slug</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">tags</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">title</span></span><br></pre></td></tr></table></figure></li>
+<li><p>In <code>Next Theme __config.yml</code>, set:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">algolia_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">hits:</span></span><br><span class="line">    <span class="attr">per_page:</span> <span class="number">10</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>I think this way will be better: If it is found, it will display the
+found results, instead of showing that XXX is found within XXX
+milliseconds, like Google, Baidu does. If it is not found, it will
+display "not found".</p>
+<p>In
+<code>&lt;BlogDir&gt;/themes/next/source/js/third-party/search/algolia-search.js</code>,
+delete:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">instantsearch.<span class="property">widgets</span>.<span class="title function_">stats</span>(&#123;</span><br><span class="line">      <span class="attr">container</span>: <span class="string">&#x27;.algolia-stats&#x27;</span>,</span><br><span class="line">      <span class="attr">templates</span>: &#123;</span><br><span class="line">        <span class="attr">text</span>: <span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">const</span> stats = <span class="variable constant_">CONFIG</span>.<span class="property">i18n</span>.<span class="property">hits_time</span></span><br><span class="line">            .<span class="title function_">replace</span>(<span class="string">&#x27;$&#123;hits&#125;&#x27;</span>, data.<span class="property">nbHits</span>)</span><br><span class="line">            .<span class="title function_">replace</span>(<span class="string">&#x27;$&#123;time&#125;&#x27;</span>, data.<span class="property">processingTimeMS</span>);</span><br><span class="line">          <span class="keyword">return</span> <span class="string">`&lt;span&gt;<span class="subst">$&#123;stats&#125;</span>&lt;/span&gt;</span></span><br><span class="line"><span class="string">            &lt;img src=&quot;<span class="subst">$&#123;CONFIG.images&#125;</span>/logo-algolia-nebula-blue-full.svg&quot; alt=&quot;Algolia&quot;&gt;`</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">cssClasses</span>: &#123;</span><br><span class="line">        <span class="attr">text</span>: <span class="string">&#x27;search-stats&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;),</span><br></pre></td></tr></table></figure>
+<p>Pros:</p>
+<ol type="1">
+<li>No need to preload, fast speed</li>
+</ol>
+<p>Cons:</p>
+<ol type="1">
+<li>The free version has a limit of 10,000 searches per month.</li>
+<li>Every time you update an article, you need to create a new
+index.</li>
+<li>In China, search may be slow due to slow internet.</li>
+</ol>
+<p>Reference：<a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/third-party-services/search-services">Next
+reference doc</a>，<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/hexo-algolia#public-facing-search-options">hexo-algolia
+reference doc</a>，<a target="_blank" rel="noopener" href="https://github.com/LouisBarranqueiro/hexo-algoliasearch">Hexo
+Algoliasearch</a></p>
+<h1 id="add-comment-system">Add comment system</h1>
+<p>The comment system that comes with the Next theme is <a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-next-valine">valine</a>, which
+is a comment system without a backend, and it is said that there are
+some information security issues. So I use <a target="_blank" rel="noopener" href="https://waline.js.org/en/">waline</a>. First we need to follow
+waline's configuration document to set the required components, and also
+install the plugin <a href="https://www.%20npmjs.com/package/@waline/hexo-next">Hexo NexT
+Waline</a>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @waline/hexo-next --save</span><br></pre></td></tr></table></figure>
+<p>In <code>Hexo site __config.yml</code>, set:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"># Waline Config File</span><br><span class="line"># For more information:</span><br><span class="line"># - https://waline.js.org</span><br><span class="line"># - https://waline.js.org/reference/component.html</span><br><span class="line">waline:</span><br><span class="line">  # New! Whether enable this plugin</span><br><span class="line">  enable: true</span><br><span class="line"></span><br><span class="line">  # Waline server address url, you should set this to your own link</span><br><span class="line">  serverURL: &#x27;https://waline-server-five-pi.vercel.app/&#x27;</span><br><span class="line"></span><br><span class="line">  # Waline library CDN url, you can set this to your preferred CDN</span><br><span class="line">  libUrl: https://unpkg.com/@waline/client@v2/dist/waline.js</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  # Waline CSS styles CDN url, you can set this to your preferred CDN</span><br><span class="line">  cssUrl: https://unpkg.com/@waline/client@v2/dist/waline.css</span><br><span class="line"></span><br><span class="line">  # Custom locales</span><br><span class="line">  locale:</span><br><span class="line">    placeholder: Welcome to comment # Comment box placeholder</span><br><span class="line"></span><br><span class="line">  # If false, comment count will only be displayed in post page, not in home page</span><br><span class="line">  commentCount: false</span><br><span class="line"></span><br><span class="line">  # Pageviews count, Note: You should not enable both `waline.pageview` and `leancloud_visitors`.</span><br><span class="line">  pageview: true</span><br><span class="line"></span><br><span class="line">  # Custom emoji</span><br><span class="line">  emoji:</span><br><span class="line">  #   - https://unpkg.com/@waline/emojis@1.0.1/weibo</span><br><span class="line">  #   - https://unpkg.com/@waline/emojis@1.0.1/alus</span><br><span class="line">  #   - https://unpkg.com/@waline/emojis@1.0.1/bilibili</span><br><span class="line">  #   - https://unpkg.com/@waline/emojis@1.0.1/qq</span><br><span class="line">  #   - https://unpkg.com/@waline/emojis@1.0.1/tieba</span><br><span class="line">  #   - https://unpkg.com/@waline/emojis@1.0.1/tw-emoji</span><br><span class="line"></span><br><span class="line">  # Comment infomation, valid meta are nick, mail and link</span><br><span class="line">  meta:</span><br><span class="line">    - nick</span><br><span class="line">    - mail</span><br><span class="line">    # - link</span><br><span class="line"></span><br><span class="line">  # Set required meta field, e.g.: [nick] | [nick, mail]</span><br><span class="line">  # requiredMeta:</span><br><span class="line">  #   - nick</span><br><span class="line"></span><br><span class="line">  # Language, available values: en-US, zh-CN, zh-TW, pt-BR, ru-RU, jp-JP</span><br><span class="line">  lang: en-US</span><br><span class="line"></span><br><span class="line">  # Word limit, no limit when setting to 0</span><br><span class="line">  wordLimit: 0</span><br><span class="line"></span><br><span class="line">  # Whether enable login, can choose from &#x27;enable&#x27;, &#x27;disable&#x27; and &#x27;force&#x27;</span><br><span class="line">  login: enable</span><br><span class="line"></span><br><span class="line">  # comment per page</span><br><span class="line">  pageSize: 10</span><br></pre></td></tr></table></figure>
+<p>If you don't want to enable comments on a page, please set the
+follows in the header of the article:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">comments: false</span><br></pre></td></tr></table></figure>
+<p>The default comment description is <code>Waline</code>, which is very
+strange. In <code>&lt;BlodDir&gt;\themes\next\languages\en.yml</code>,
+add it under <code>post</code>:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post:</span></span><br><span class="line">  <span class="attr">comments:</span></span><br><span class="line">    <span class="attr">waline:</span> <span class="string">Comments</span></span><br></pre></td></tr></table></figure>
+<p>then you modify <code>Waline</code> to <code>Comments</code>.</p>
+<h1 id="set-up-ftp-synchronization">Set up FTP synchronization</h1>
+<p>Currently I use a virtual host to host my blog and need to use FTP to
+upload files. According to <a target="_blank" rel="noopener" href="https://github.com/ChaosTong/hexo-deployer-ftpsync">ChaosTong/hexo-deployer-ftpsync</a>,
+I simply modified it to accommodate the latest node.js.</p>
+<p>Install:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install git@github.com:littlesevenmo/hexo-deployer-ftpsync.git --save</span><br></pre></td></tr></table></figure>
+<p>In <code>Hexo site __config.yml</code>, set:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">ftpsync</span></span><br><span class="line">  <span class="attr">host:</span> <span class="string">Your</span> <span class="string">FTP</span> <span class="string">Host</span></span><br><span class="line">  <span class="attr">user:</span> <span class="string">Your</span> <span class="string">FTP</span> <span class="string">Username</span></span><br><span class="line">  <span class="attr">pass:</span> <span class="string">Your</span> <span class="string">FTP</span> <span class="string">Password</span></span><br><span class="line">  <span class="attr">remote:</span> <span class="string">/</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">21</span></span><br><span class="line">  <span class="attr">ignore:</span> </span><br><span class="line">  <span class="attr">connections:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">verbose:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>Then you can use <code>hexo d</code> to deploy your blog.</p>
+<h1 id="force-access-to-blog-with-ssh">Force access to blog with
+SSH</h1>
+<p>Use FTP to upload a file named <code>.htaccess</code> to the root
+directory of the site, the content is</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RewriteEngine On</span><br><span class="line">RewriteCond %&#123;HTTP:KERSSL&#125; !on</span><br><span class="line">RewriteRule .* https://www.YourDomin.com/$1 [R=301,L]</span><br></pre></td></tr></table></figure>
+<p>Since the contents of the <code>public</code> folder will change
+after <code>hexo d</code>, it has to be copied, pasted and uploaded
+again each time. I use the alias command (function in Windows
+PowerShell) to execute multiple commands at a time, as follows:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function blogd &#123;cd D:\Blog ; hexo clean ; hexo g ; hexo algolia; Copy-Item -Path .\.htaccess -Destination .\public\; hexo d&#125;</span><br></pre></td></tr></table></figure>
+<p>Please note that the setting method may be different under different
+virtual hosts</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>The results of the above tests in my local are 0 Error, 0 Warning</p>
+<p><img src="/post/8f9c2317//15c49db55792dcbcf6f29defb40871a7.jpg"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Blog/" rel="tag"><i class="fa fa-tag"></i> Blog</a>
+          </div>
+
+        
+
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Boqiang</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.14.2/algoliasearch-lite.umd.js" integrity="sha256-dImjLPUsG/6p3+i7gVKBiDM8EemJAhQ0VvkRK2pVsQY=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.46.3/instantsearch.production.min.js" integrity="sha256-TDBtvQ4sIGgJS5bk8VOKto+yvrblCB/JxE/9odR5u+M=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"en-US","enable":true,"serverURL":"waline.boqiangli.com","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":false,"pageview":true,"libUrl":"https://unpkg.com/@waline/client@v2/dist/waline.js","locale":{"placeholder":"Welcome to comment"},"emoji":null,"meta":["nick","mail"],"wordLimit":0,"login":"enable","pageSize":10,"el":"#waline","comment":true,"path":"/post/8f9c2317/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>
