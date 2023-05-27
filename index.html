@@ -148,13 +148,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/Tags/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -183,6 +183,151 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.boqiangli.com/post/96495af0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Boqiang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Boqiang's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Boqiang's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/post/96495af0/" class="post-title-link" itemprop="url">Install HPCC Platforms and Setup ECL IDE</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 05-26-2023 21:28:51 / Modified: 22:42:37" itemprop="dateCreated datePublished" datetime="2023-05-26T21:28:51-04:00">05-26-2023</time>
+    </span>
+
+  
+  
+  
+    <span class="post-meta-item" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="waline-pageview-count" data-path="/post/96495af0/"></span>
+    </span>
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <span id="more"></span>
+<h1 id="install-hpcc-platforms">Install HPCC Platforms</h1>
+<ol type="1">
+<li><p>Download the installation package of HPCC Platforms corresponding
+to the operating system <a target="_blank" rel="noopener" href="https://hpccsystems.com/download/#h-bare-metal-non-containerized-platform">here</a>.
+For example, if my system is Ubuntu-22.04 LTS, then download this
+file:</p>
+<figure>
+<img src="/post/96495af0/image-20230526213027939.png" alt="image-20230526213027939">
+<figcaption aria-hidden="true">image-20230526213027939</figcaption>
+</figure></li>
+<li><p>Run
+<code>dpkg -i hpccsystems-platform-community_9.0.8-1jammy_amd64_withsymbols.deb</code>.
+There may be some errors at this time. Ignore it, please.</p></li>
+<li><p>Run <code>sudo apt-get update</code></p></li>
+<li><p>Run <code>sudo apt-get install -f</code></p></li>
+<li><p>Verify that the program installed successfully: Run
+<code>cd /opt/HPCCSystems</code>. The installation is successful if no
+errors have occurred and the directory is entered successfully.</p></li>
+<li><p>Check plugins: Run <code>cd /opt/HPCCSystems/plugins</code>,
+<code>ls -lart</code></p></li>
+<li><p>Check current service status: Run
+<code>sudo /etc/init.d/hpcc-init status</code></p></li>
+<li><p>Start HPCC service: Run
+<code>sudo /etc/init.d/hpcc-init start</code></p></li>
+<li><p>Check the IP address: Run <code>ip addr show</code>. You can
+access <code>IP addr: 8010</code> to login ECL Watch</p></li>
+</ol>
+<h1 id="install-ecl-ide">Install ECL IDE</h1>
+<p>ECL IDE is an IDE specially designed for ECL programming language,
+related documents can be found <a target="_blank" rel="noopener" href="https://hpccsystems.com/training/documentation/ecl-ide-and-client-tools/">here</a>.</p>
+<p>First, download ECL IDE according to the platform, and find ECL IDE
+and Client Tools <a target="_blank" rel="noopener" href="https://hpccsystems.com/download/">here</a>.</p>
+<p>When you log in for the first time, the preference interface will pop
+up, enter the IP obtained in <a href="#Install%20HPCC%20Platforms">Install HPCC Platforms</a> in the IP
+address, click Advanced, and leave Attribute Server blank. Other options
+can be set according to your preferences.</p>
+<p>In the ECL Folder of the Compiler tab, add your own code
+directory.</p>
+<h1 id="helloworld">HelloWorld</h1>
+<p>In the lower right Repository window, in My Files, right click and
+Insert Folder, then in the newly created folder, right click and Insert
+File.</p>
+<figure>
+<img src="/post/96495af0/image-20230526222727457.png" alt="image-20230526222727457">
+<figcaption aria-hidden="true">image-20230526222727457</figcaption>
+</figure>
+<p>In the newly created file, enter:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OUTPUT(&#x27;Hello World!&#x27;);</span><br></pre></td></tr></table></figure>
+<p>Click Submit in the upper right corner, and you can see the result in
+the result tab.</p>
+<figure>
+<img src="/post/96495af0/image-20230526222802693.png" alt="image-20230526222802693">
+<figcaption aria-hidden="true">image-20230526222802693</figcaption>
+</figure>
+<h1 id="install-the-hpcc-systems-machine-learning-library">Install the
+HPCC Systems machine learning library</h1>
+<p>The HPCC Systems machine learning library can be found <a target="_blank" rel="noopener" href="https://hpccsystems.com/download/free-modules/hpcc-systems-machine-learning-library/">here</a>.
+Among them, ML_Core is the dependency of all other HPCC Systems machine
+learning packages.</p>
+<p>Install HPCC ML_Core Bundle:
+<code>sudo ecl bundle install https://github.com/hpcc-systems/ML_Core.git</code></p>
+<p>Before installing <a target="_blank" rel="noopener" href="https://github.com/hpcc-systems/GNN">GNN
+bundle</a>, you need to <strong>install TensorFlow as the root
+user</strong>, and then run
+<code>sudo https://github.com/hpcc- systems/GNN</code></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
