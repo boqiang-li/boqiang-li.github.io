@@ -21,32 +21,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.boqiangli.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":null,"post_body":null,"coll_header":null,"sidebar":"fadeIn"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"algolia":{"appID":"ACZSSY9M5F","apiKey":"f9ad8b3b4fbcdbfe16684e6ffb28b587","indexName":"hexo","hits":{"per_page":10}}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="HPCC Systems is a platform purpose-built for high-speed data engineering. This article shows how to build HPCC Platform and set up ECL IDE.">
+    <meta name="description" content="In the ECL language, operations such as OUTPUT cannot be performed in the definition, complicating our view of intermediate variables. This blog introduces debugging tips for several ECL programming">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Install HPCC Platforms and Setup ECL IDE">
-<meta property="og:url" content="https://www.boqiangli.com/post/96495af0/index.html">
+<meta property="og:title" content="Debug ECL programming">
+<meta property="og:url" content="https://www.boqiangli.com/post/4a752ce/index.html">
 <meta property="og:site_name" content="Boqiang&#39;s Blog">
-<meta property="og:description" content="HPCC Systems is a platform purpose-built for high-speed data engineering. This article shows how to build HPCC Platform and set up ECL IDE.">
+<meta property="og:description" content="In the ECL language, operations such as OUTPUT cannot be performed in the definition, complicating our view of intermediate variables. This blog introduces debugging tips for several ECL programming">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://www.boqiangli.com/post/96495af0/image-20230526213027939-1685786902862-1.png">
-<meta property="og:image" content="https://www.boqiangli.com/post/96495af0/image-20230526222727457-1685786902862-3.png">
-<meta property="og:image" content="https://www.boqiangli.com/post/96495af0/image-20230526222802693-1685786902862-2.png">
-<meta property="article:published_time" content="2023-05-27T01:28:51.000Z">
-<meta property="article:modified_time" content="2023-06-03T10:08:25.464Z">
+<meta property="og:image" content="https://www.boqiangli.com/post/4a752ce/image-20230619044834916.png">
+<meta property="article:published_time" content="2023-06-19T08:43:58.000Z">
+<meta property="article:modified_time" content="2023-06-19T08:49:50.882Z">
 <meta property="article:author" content="Boqiang">
-<meta property="article:tag" content="HPCC Systems">
+<meta property="article:tag" content="ECL Programming Language">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.boqiangli.com/post/96495af0/image-20230526213027939-1685786902862-1.png">
+<meta name="twitter:image" content="https://www.boqiangli.com/post/4a752ce/image-20230619044834916.png">
 
 
-<link rel="canonical" href="https://www.boqiangli.com/post/96495af0/">
+<link rel="canonical" href="https://www.boqiangli.com/post/4a752ce/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.boqiangli.com/post/96495af0/","path":"/post/96495af0/","title":"Install HPCC Platforms and Setup ECL IDE"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.boqiangli.com/post/4a752ce/","path":"/post/4a752ce/","title":"Debug ECL programming"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Install HPCC Platforms and Setup ECL IDE | Boqiang's Blog</title>
+<title>Debug ECL programming | Boqiang's Blog</title>
   
 
 
@@ -145,8 +143,9 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#install-hpcc-platforms"><span class="nav-number">1.</span> <span class="nav-text">Install HPCC Platforms</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#install-ecl-ide"><span class="nav-number">2.</span> <span class="nav-text">Install ECL IDE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#helloworld"><span class="nav-number">3.</span> <span class="nav-text">HelloWorld</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#install-the-hpcc-systems-gnn-bundle"><span class="nav-number">4.</span> <span class="nav-text">Install the HPCC Systems
-GNN bundle</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#use-when-to-output-intermediate-variables"><span class="nav-number">1.</span> <span class="nav-text">Use WHEN to output
+intermediate variables</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#logging-with-std.system.log"><span class="nav-number">2.</span> <span class="nav-text">Logging with Std.System.Log</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#in-embedded-languages-use-assert-to-check-intermediate-variables"><span class="nav-number">3.</span> <span class="nav-text">In
+embedded languages, use assert to check intermediate variables</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -204,7 +203,7 @@ GNN bundle</span></a></li></ol></div>
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://www.boqiangli.com/post/96495af0/">
+    <link itemprop="mainEntityOfPage" href="https://www.boqiangli.com/post/4a752ce/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -217,12 +216,12 @@ GNN bundle</span></a></li></ol></div>
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Install HPCC Platforms and Setup ECL IDE | Boqiang's Blog">
+      <meta itemprop="name" content="Debug ECL programming | Boqiang's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Install HPCC Platforms and Setup ECL IDE
+          Debug ECL programming
         </h1>
 
         <div class="post-meta-container">
@@ -232,15 +231,9 @@ GNN bundle</span></a></li></ol></div>
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 05-26-2023 21:28:51" itemprop="dateCreated datePublished" datetime="2023-05-26T21:28:51-04:00">05-26-2023</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 06-03-2023 06:08:25" itemprop="dateModified" datetime="2023-06-03T06:08:25-04:00">06-03-2023</time>
+      <time title="Created: 06-19-2023 04:43:58 / Modified: 04:49:50" itemprop="dateCreated datePublished" datetime="2023-06-19T04:43:58-04:00">06-19-2023</time>
     </span>
 
   
@@ -252,8 +245,8 @@ GNN bundle</span></a></li></ol></div>
     </span>
     <span class="post-meta-item-text">Comments: </span>
   
-    <a title="waline" href="/post/96495af0/#waline" itemprop="discussionUrl">
-      <span class="post-comments-count waline-comment-count" data-path="/post/96495af0/" itemprop="commentCount"></span>
+    <a title="waline" href="/post/4a752ce/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/post/4a752ce/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -263,7 +256,7 @@ GNN bundle</span></a></li></ol></div>
         <i class="far fa-eye"></i>
       </span>
       <span class="post-meta-item-text">Views: </span>
-      <span class="waline-pageview-count" data-path="/post/96495af0/"></span>
+      <span class="waline-pageview-count" data-path="/post/4a752ce/"></span>
     </span>
   
 </div>
@@ -275,77 +268,42 @@ GNN bundle</span></a></li></ol></div>
     
     
     <div class="post-body" itemprop="articleBody">
-        <p><a target="_blank" rel="noopener" href="https://hpccsystems.com/">HPCC Systems</a> is a platform
-purpose-built for high-speed data engineering. This article shows how to
-build HPCC Platform and set up ECL IDE.</p>
+        <p>In the ECL language, operations such as OUTPUT cannot be performed in
+the definition, complicating our view of intermediate variables. This
+blog introduces debugging tips for several ECL programming language.</p>
 <span id="more"></span>
-<h1 id="install-hpcc-platforms">Install HPCC Platforms</h1>
-<ol type="1">
-<li><p>Download the installation package of HPCC Platforms corresponding
-to the operating system <a target="_blank" rel="noopener" href="https://hpccsystems.com/download/#h-bare-metal-non-containerized-platform">here</a>.
-For example, if my system is Ubuntu-22.04 LTS, then download this
-file:</p>
+<h1 id="use-when-to-output-intermediate-variables">Use WHEN to output
+intermediate variables</h1>
+<p>Unlike programming languages such as C++ and Python, in ECL, the
+<code>OUTPUT</code> operation cannot be performed in the function
+definition. It will prompt</p>
+<blockquote>
+<p>WHEN must be used to associate an action with a definition</p>
+</blockquote>
+<p>We can use <code>WHEN</code> to output intermediate variables. For
+example:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//a FUNCTION with side-effect Action</span><br><span class="line">namesTable := FUNCTION</span><br><span class="line">   namesRecord := RECORD</span><br><span class="line">     STRING20 surname;</span><br><span class="line">     STRING10 forename;</span><br><span class="line">     INTEGER2 age := 25;</span><br><span class="line">   END;</span><br><span class="line">   o := OUTPUT(&#x27;namesTable used by user &lt;x&gt;&#x27;);</span><br><span class="line">   ds := DATASET([&#123;&#x27;x&#x27;,&#x27;y&#x27;,22&#125;],namesRecord);</span><br><span class="line">   RETURN WHEN(ds,O);</span><br><span class="line">END;</span><br><span class="line"></span><br><span class="line">z := namesTable();</span><br><span class="line">OUTPUT(z);</span><br></pre></td></tr></table></figure>
+<p>For multiple outputs, <code>SEQUENTIAL</code> can be used. For
+example:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//a FUNCTION with side-effect Action</span><br><span class="line">namesTable := FUNCTION</span><br><span class="line">   namesRecord := RECORD</span><br><span class="line">     STRING20 surname;</span><br><span class="line">     STRING10 forename;</span><br><span class="line">     INTEGER2 age := 25;</span><br><span class="line">   END;</span><br><span class="line">   ds := DATASET([&#123;&#x27;x&#x27;,&#x27;y&#x27;,22&#125;],namesRecord);</span><br><span class="line">   RETURN WHEN(ds,SEQUENTIAL(OUTPUT(&#x27;namesTable used by user &lt;x&gt;&#x27;), OUTPUT(&#x27;test2&#x27;)));</span><br><span class="line">END;</span><br><span class="line"></span><br><span class="line">z := namesTable();</span><br><span class="line">OUTPUT(z);</span><br></pre></td></tr></table></figure>
+<h1 id="logging-with-std.system.log">Logging with Std.System.Log</h1>
+<p>By using <code>Std.System.Log</code>, some logs can be recorded. For
+example:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">IMPORT Std.System.Log AS Syslog;</span><br><span class="line"></span><br><span class="line">//a FUNCTION with side-effect Action</span><br><span class="line">namesTable := FUNCTION</span><br><span class="line">   namesRecord := RECORD</span><br><span class="line">     STRING20 surname;</span><br><span class="line">     STRING10 forename;</span><br><span class="line">     INTEGER2 age := 25;</span><br><span class="line">   END;</span><br><span class="line">   ds := DATASET([&#123;&#x27;x&#x27;,&#x27;y&#x27;,22&#125;],namesRecord);</span><br><span class="line">   RETURN WHEN(ds, Syslog.addWorkunitInformation(&#x27;test1234&#x27;));</span><br><span class="line">END;</span><br><span class="line"></span><br><span class="line">z := namesTable();</span><br><span class="line">OUTPUT(z);</span><br></pre></td></tr></table></figure>
+<p>In Helpers of ECL Watch, in <code>EclAgentLog</code>, you can find
+the corresponding log.</p>
 <figure>
-<img src="/post/96495af0/image-20230526213027939-1685786902862-1.png" alt="image-20230526213027939">
-<figcaption aria-hidden="true">image-20230526213027939</figcaption>
-</figure></li>
-<li><p>Run
-<code>dpkg -i hpccsystems-platform-community_9.0.8-1jammy_amd64_withsymbols.deb</code>.
-There may be some errors at this time. Ignore it, please.</p></li>
-<li><p>Run <code>sudo apt-get update</code></p></li>
-<li><p>Run <code>sudo apt-get install -f</code></p></li>
-<li><p>Verify that the program installed successfully: Run
-<code>cd /opt/HPCCSystems</code>. The installation is successful if no
-errors have occurred and the directory is entered successfully.</p></li>
-<li><p>Check plugins: Run <code>cd /opt/HPCCSystems/plugins</code>,
-<code>ls -lart</code></p></li>
-<li><p>Check current service status: Run
-<code>sudo /etc/init.d/hpcc-init status</code></p></li>
-<li><p>Start HPCC service: Run
-<code>sudo /etc/init.d/hpcc-init start</code></p></li>
-<li><p>Check the IP address: Run <code>ip addr show</code>. You can
-access <code>IP addr: 8010</code> to login ECL Watch</p></li>
-</ol>
-<h1 id="install-ecl-ide">Install ECL IDE</h1>
-<p>ECL IDE is an IDE specially designed for ECL programming language,
-related documents can be found <a target="_blank" rel="noopener" href="https://hpccsystems.com/training/documentation/ecl-ide-and-client-tools/">here</a>.</p>
-<p>First, download ECL IDE according to the platform, and find ECL IDE
-and Client Tools <a target="_blank" rel="noopener" href="https://hpccsystems.com/download/">here</a>.</p>
-<p>When you log in for the first time, the preference interface will pop
-up, enter the IP obtained in <a href="#Install%20HPCC%20Platforms">Install HPCC Platforms</a> in the IP
-address, click Advanced, and leave Attribute Server blank. Other options
-can be set according to your preferences.</p>
-<p>In the ECL Folder of the Compiler tab, add your own code
-directory.</p>
-<h1 id="helloworld">HelloWorld</h1>
-<p>In the lower right Repository window, in My Files, right click and
-Insert Folder, then in the newly created folder, right click and Insert
-File.</p>
-<figure>
-<img src="/post/96495af0/image-20230526222727457-1685786902862-3.png" alt="image-20230526222727457">
-<figcaption aria-hidden="true">image-20230526222727457</figcaption>
+<img src="/post/4a752ce/image-20230619044834916.png" alt="image-20230619044834916">
+<figcaption aria-hidden="true">image-20230619044834916</figcaption>
 </figure>
-<p>In the newly created file, enter:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OUTPUT(&#x27;Hello World!&#x27;);</span><br></pre></td></tr></table></figure>
-<p>Click Submit in the upper right corner, and you can see the result in
-the result tab.</p>
-<figure>
-<img src="/post/96495af0/image-20230526222802693-1685786902862-2.png" alt="image-20230526222802693">
-<figcaption aria-hidden="true">image-20230526222802693</figcaption>
-</figure>
-<h1 id="install-the-hpcc-systems-gnn-bundle">Install the HPCC Systems
-GNN bundle</h1>
-<p>The HPCC Systems machine learning library can be found <a target="_blank" rel="noopener" href="https://hpccsystems.com/download/free-modules/hpcc-systems-machine-learning-library/">here</a>.
-Among them, <a target="_blank" rel="noopener" href="https://github.com/hpcc-systems/ML_Core">ML_Core</a> is the
-dependency of all other HPCC Systems machine learning packages.</p>
-<p>Before installing the GNN bundle, you need to <a href="https://www.boqiangli.com/post/df26575/">install TensorFlow</a>
-first.</p>
-<p>My HPCC Platform is on WSL2-Ubuntu22.04, and my ECL IDE is on
-Windows, so I need to install GNN Bundle in Windows.</p>
-<p>run the below code in cmd:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;C:\Program Files (x86)\HPCCSystems\9.0.8\clienttools\bin\ecl.exe&quot; bundle install https://github.com/hpcc-systems/ML_Core.git</span><br><span class="line">&quot;C:\Program Files (x86)\HPCCSystems\9.0.8\clienttools\bin\ecl.exe&quot; bundle install https://github.com/hpcc-systems/GNN.git</span><br></pre></td></tr></table></figure>
-<p>You can test whether the installation is successful by running
-<code>GNN/Test/TensorAlignTest</code>.</p>
+<h1 id="in-embedded-languages-use-assert-to-check-intermediate-variables">In
+embedded languages, use assert to check intermediate variables</h1>
+<p>When we need to debug some embedded Python codes, we cannot use the
+<code>print</code> function to print intermediate variables and can only
+output them externally by means of an
+<code>assert False, 'message'</code>. For example, if I want to view the
+summary of the model I defined, I can use the following:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Debug</span><br><span class="line">stringlist = []</span><br><span class="line">mod.summary(print_fn=lambda x: stringlist.append(x))</span><br><span class="line">short_model_summary = &quot;\n&quot;.join(stringlist)</span><br><span class="line">assert 1 == 0, short_model_summary    </span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -355,20 +313,20 @@ Windows, so I need to install GNN Bundle in Windows.</p>
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/HPCC-Systems/" rel="tag"><i class="fa fa-tag"></i> HPCC Systems</a>
+              <a href="/tags/ECL-Programming-Language/" rel="tag"><i class="fa fa-tag"></i> ECL Programming Language</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/post/8f9c2317/" rel="prev" title="New Blog, New Beginning">
-                  <i class="fa fa-chevron-left"></i> New Blog, New Beginning
+                <a href="/post/21231f84/" rel="prev" title="Introduce to HPCC GNN bundle">
+                  <i class="fa fa-chevron-left"></i> Introduce to HPCC GNN bundle
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/post/df26575/" rel="next" title="Install CUDA and TensorFlow in WSL">
-                  Install CUDA and TensorFlow in WSL <i class="fa fa-chevron-right"></i>
+                <a href="/post/4e995520/" rel="next" title="numpy() is only available when eager execution is enabled in TensorFlow2 and its solution">
+                  numpy() is only available when eager execution is enabled in TensorFlow2 and its solution <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -425,7 +383,7 @@ Windows, so I need to install GNN Bundle in Windows.</p>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
-<script class="next-config" data-name="waline" type="application/json">{"lang":"en-US","enable":true,"serverURL":"waline.boqiangli.com","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":false,"pageview":true,"libUrl":"https://unpkg.com/@waline/client@v2/dist/waline.js","locale":{"placeholder":"Welcome to comment"},"emoji":null,"meta":["nick","mail"],"wordLimit":0,"login":"enable","pageSize":10,"el":"#waline","comment":true,"path":"/post/96495af0/"}</script>
+<script class="next-config" data-name="waline" type="application/json">{"lang":"en-US","enable":true,"serverURL":"waline.boqiangli.com","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":false,"pageview":true,"libUrl":"https://unpkg.com/@waline/client@v2/dist/waline.js","locale":{"placeholder":"Welcome to comment"},"emoji":null,"meta":["nick","mail"],"wordLimit":0,"login":"enable","pageSize":10,"el":"#waline","comment":true,"path":"/post/4a752ce/"}</script>
 <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
 <script>
 document.addEventListener('page:loaded', () => {
