@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.boqiangli.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":null,"post_body":null,"coll_header":null,"sidebar":"fadeIn"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"algolia":{"appID":"ACZSSY9M5F","apiKey":"f9ad8b3b4fbcdbfe16684e6ffb28b587","indexName":"hexo","hits":{"per_page":10}}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="During my internship at HPCC Systems in 2023, I had the incredible opportunity to work on a dynamic project that pushed the boundaries of my technical skills and knowledge. In this post, I will summ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2023 HPCC Systems Internship Summary">
+<meta property="og:url" content="https://www.boqiangli.com/post/9be428e8/index.html">
+<meta property="og:site_name" content="Boqiang&#39;s Blog">
+<meta property="og:description" content="During my internship at HPCC Systems in 2023, I had the incredible opportunity to work on a dynamic project that pushed the boundaries of my technical skills and knowledge. In this post, I will summ">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.boqiangli.com/post/9be428e8/image-20230811223249032.png">
+<meta property="og:image" content="https://www.boqiangli.com/post/9be428e8/image-20230811223338165.png">
+<meta property="article:published_time" content="2023-08-12T01:54:59.000Z">
+<meta property="article:modified_time" content="2023-08-12T02:58:44.584Z">
+<meta property="article:author" content="Boqiang">
+<meta property="article:tag" content="HPCC Systems">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.boqiangli.com/post/9be428e8/image-20230811223249032.png">
+
+
+<link rel="canonical" href="https://www.boqiangli.com/post/9be428e8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://www.boqiangli.com/post/9be428e8/","path":"/post/9be428e8/","title":"2023 HPCC Systems Internship Summary"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>2023 HPCC Systems Internship Summary | Boqiang's Blog</title>
+  
+
+
+
+
+
+<link rel="dns-prefetch" href="waline.boqiangli.com">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Boqiang's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/Tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/Categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container"></div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container">
+  <div class="algolia-stats"><hr></div>
+  <div class="algolia-hits"></div>
+  <div class="algolia-pagination"></div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#background-and-motivation"><span class="nav-number">1.</span> <span class="nav-text">Background and Motivation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#technical-details"><span class="nav-number">2.</span> <span class="nav-text">Technical details</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#upgrade-functions-to-tensorflow2.x"><span class="nav-number">2.1.</span> <span class="nav-text">Upgrade functions to
+TensorFlow2.x</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#create-new-functions"><span class="nav-number">2.2.</span> <span class="nav-text">Create new functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#support-pre-trained-model"><span class="nav-number">2.3.</span> <span class="nav-text">Support Pre-trained Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transfer-learning"><span class="nav-number">2.4.</span> <span class="nav-text">Transfer Learning</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#performance-testing"><span class="nav-number">3.</span> <span class="nav-text">Performance Testing</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#faq"><span class="nav-number">4.</span> <span class="nav-text">FAQ</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#conclusion"><span class="nav-number">5.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#references"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Boqiang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/Tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://www.boqiangli.com/post/9be428e8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Boqiang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Boqiang's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="2023 HPCC Systems Internship Summary | Boqiang's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2023 HPCC Systems Internship Summary
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 08-11-2023 21:54:59 / Modified: 22:58:44" itemprop="dateCreated datePublished" datetime="2023-08-11T21:54:59-04:00">08-11-2023</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Comments: </span>
+  
+    <a title="waline" href="/post/9be428e8/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/post/9be428e8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-item" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="waline-pageview-count" data-path="/post/9be428e8/"></span>
+    </span>
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>During my internship at HPCC Systems in 2023, I had the incredible
+opportunity to work on a dynamic project that pushed the boundaries of
+my technical skills and knowledge. In this post, I will summarize the
+key aspects and achievements of my internship project, highlighting the
+challenges I faced, the solutions I implemented, and the valuable
+lessons I learned along the way.</p>
+<span id="more"></span>
+<h1 id="background-and-motivation">Background and Motivation</h1>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://hpccsystems.com/">HPCC Systems</a>: The HPCC
+Systems platform is a remarkably powerful system for solving big data
+challenges.</p></li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/hpcc-systems/GNN">Generalized Neural
+Network (GNN) bundle</a>: This bundle provides a generalized ECL
+interface to Keras over TensorFlow.</p></li>
+<li><p>The GNN bundle was originally developed against the TensorFlow1.5
+interface. We currently support TensorFlow2.0 using a TensorFlow
+compatibility mode. We want to achieve the following goals in this
+project:</p>
+<ul>
+<li><strong>Adapt GNN to directly use the TensorFlow 2.0
+interface</strong>: Our primary objective is to migrate the GNN bundle
+to directly integrate with the TensorFlow 2.0 interface, leveraging its
+improved features and capabilities for enhanced performance and
+efficiency.</li>
+<li><strong>Provide effective support for GPUs</strong>: We intend to
+ensure effective support for GPUs, allowing users to harness the power
+of graphical processing units for accelerated neural network
+computations and faster training times.</li>
+<li><strong>Full support for pre-trained models</strong>: The upgraded
+GNN bundle will be designed to fully support and accommodate the latest
+and most advanced neural network models available. This will enable
+users to leverage state-of-the-art architectures and achieve better
+results for their specific tasks.</li>
+<li><strong>Save/Load trained model for later reuse</strong>: 1.We want
+users to be able to save/load their trained models for later use.</li>
+</ul></li>
+</ul>
+<h1 id="technical-details">Technical details</h1>
+<h2 id="upgrade-functions-to-tensorflow2.x">Upgrade functions to
+TensorFlow2.x</h2>
+<p>We upgraded some functions to native TensorFlow2.x <strong>without
+changing the API</strong>:</p>
+<ul>
+<li><strong>DefineModel</strong>: Define a Keras / Tensorflow model
+using Keras sytax.</li>
+<li><strong>DefineFuncModel</strong>: Construct a Keras Functional
+Model.</li>
+</ul>
+<p>These functions play a crucial role in defining the neural network
+architecture. In the upgraded GNN bundle, both functions have been
+enhanced to utilize the TensorFlow 2.x API. <code>DefineModel</code>
+follows a sequential approach, where the layers are stacked in a strict
+order. On the other hand, <code>DefineFuncModel</code> offers a more
+flexible definition, allowing users to specify not only the shape of
+each layer but also the connections between different layers. These
+upgraded functions now support loading state-of-the-art models, which
+provide users with more advanced and powerful neural network
+architectures for their tasks.</p>
+<ul>
+<li><strong>Fit</strong>: Train the model using training data.</li>
+</ul>
+<p>The <code>Fit</code> function is used for training the neural
+network. It allows users to set parameters such as batch size and epoch
+number, providing greater control over the training process. With the
+upgrade to TensorFlow 2.x, the training process becomes more efficient
+and streamlined.</p>
+<ul>
+<li><p><strong>EvaluateMod</strong>: Evaluate the trained model using
+some test metrics.</p></li>
+<li><p><strong>Predict</strong>: Predict the results using the trained
+model.</p></li>
+</ul>
+<p>After training the model using the Fit function, the
+<code>EvaluateMod</code> function helps users assess the model's
+performance by providing metrics on how well it has been trained. The
+<code>Predict</code> function allows users to apply the trained neural
+network for tasks like recognition and classification.</p>
+<ul>
+<li><p><strong>GetWeights</strong>: Get the weights currently associated
+with the model.</p></li>
+<li><p><strong>SetWeights</strong>: Set the weights of the model from
+the results of <code>GetWeights</code>.</p></li>
+</ul>
+<p>These functions are essential for saving and loading models. Users
+can use <code>GetWeights</code> to obtain the model's weights, and
+<code>SetWeights</code> to set the model's weights, enabling easy model
+persistence. This way, trained models can be saved and loaded,
+facilitating model continuation for further training or deployment to
+customers.</p>
+<h2 id="create-new-functions">Create new functions</h2>
+<p>To enhance user experience and provide greater convenience, we have
+introduced several new functions in the GNN bundle.</p>
+<ul>
+<li><strong>GetModel</strong>: Get the structure and weights of the
+model. This function allows users to access comprehensive details of the
+model, including its structure and weights. By using
+<code>GetModel</code>, users can gain a thorough understanding of the
+neural network architecture.</li>
+<li><strong>SetModel</strong>: Create a Keras model from previously
+saved DATASET.</li>
+</ul>
+<p>Additionally, we have incorporated some developer-oriented functions
+tailored for debugging purposes:</p>
+<ul>
+<li><strong>GetSummary</strong>: Get the summary of the Keras model. The
+<code>GetSummary</code> function offers developers access to the
+underlying TensorFlow information. This allows developers to obtain
+essential insights into the inner workings of the GNN bundle, aiding
+them in identifying and resolving any issues that may arise.</li>
+<li><strong>IsGPUAvailable</strong>: Tests whether the GPU is available.
+The <code>IsGPUAvailable</code> function serves as a practical tool for
+developers to determine whether a GPU (Graphics Processing Unit) is
+available for use. This information is crucial when optimizing the GNN
+bundle's performance and ensuring efficient hardware utilization.</li>
+</ul>
+<p>By providing these user-friendly and developer-oriented functions, we
+strive to make the GNN bundle more accessible, efficient, and robust,
+catering to the needs of both users and developers alike.</p>
+<h2 id="support-pre-trained-model">Support Pre-trained Model</h2>
+<p>The recently upgraded GNN bundle introduces support for numerous
+state-of-the-art models, which have been defined and trained to serve
+specific tasks. With over 70 <a target="_blank" rel="noopener" href="https://www.tensorflow.org/api_docs/python/tf/keras/applications">pre-trained
+models</a> available, users can readily utilize them for their projects.
+Additionally, these pre-trained models can act as the foundation for
+user-specific models, allowing customization by modifying the input and
+output and expanding the neural network, a technique commonly known as
+transfer learning.</p>
+<p>One notable example among the supported pre-trained models is
+ResNet50. ResNet50 is a deep convolutional neural network comprising 50
+layers. By loading the pre-trained version of this network, which was
+trained on an extensive dataset of more than a million images from the
+ImageNet database, users gain access to a powerful image classifier. The
+pre-trained neural network is capable of categorizing images into 1000
+object categories, including items such as keyboards, mice, pencils, as
+well as various animals. As a result of its extensive training, this
+neural network has acquired a vast knowledge of feature representations
+for a diverse range of images.</p>
+<figure>
+<img src="/post/9be428e8/image-20230811223249032.png" alt="ResNet50 structure">
+<figcaption aria-hidden="true">ResNet50 structure</figcaption>
+</figure>
+<h2 id="transfer-learning">Transfer Learning</h2>
+<p>The enhanced GNN bundle offers the ability to load numerous
+pre-trained models, opening up possibilities for various impressive
+applications. For instance, consider ResNet-50, a model commonly used to
+classify 1000 different objects. However, if you wish to employ it
+specifically for classifying vegetables or woolen cloth, you can achieve
+this by leveraging the pre-trained ResNet-50 as a starting point for
+training. This involves modifying the input and output components of the
+model while preserving the existing ResNet-50 weights, rather than
+initializing the weights randomly. Such an approach allows you to tailor
+the model to your specific classification tasks effectively.</p>
+<p><img src="/post/9be428e8/image-20230811223338165.png"></p>
+<p>Also, you can use the pre-trained model as a part of your neural
+network architecture, you can add layers to it.</p>
+<h1 id="performance-testing">Performance Testing</h1>
+<p>TL; DR:</p>
+<ul>
+<li>When using the same GPU, the upgraded GNN outperforms the previous
+version with TensorFlow 1.x, achieving a remarkable 1.25 times
+performance improvement.</li>
+<li>The upgraded GNN takes advantage of GPU acceleration, resulting in a
+substantial performance boost. When compared to using only CPU, the
+performance improvement is an impressive 3.71 times.</li>
+</ul>
+<h1 id="faq">FAQ</h1>
+<p>Q: Does it support video processing?</p>
+<p>A: Yes!</p>
+<p>Q: Did it change the existing API.</p>
+<p>A: No. This means that the previous program can still be used without
+modification.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>A high point during my internship was successfully contributing to a
+complex coding task, receiving recognition from the team for my
+innovative approach. This achievement bolstered my confidence and
+affirmed my passion for software development.</p>
+<p>While on this journey, I encountered a low point when I faced an
+unforeseen roadblock that temporarily hindered project progress. For
+instance, when I come across unfamiliar grammar challenges within the
+realm of the ECL programming language, I often find myself facing
+significant obstacles. I am truly grateful for the assistance provided
+by Lili and Roger, as their guidance proved instrumental in successfully
+navigating through these complexities. This setback taught me resilience
+and the importance of seeking guidance when confronted with unfamiliar
+challenges.</p>
+<p>The main takeaways from this internship include a heightened
+appreciation for collaborative teamwork. These lessons will undoubtedly
+shape my future endeavors in the field of technology.</p>
+<h1 id="references">References</h1>
+<p>The following article records the problems and solutions I
+encountered in this project.</p>
+<ul>
+<li><p><a href="https://www.boqiangli.com/post/df26575/">Install CUDA
+and TensorFlow in WSL2</a></p></li>
+<li><p><a href="https://www.boqiangli.com/post/96495af0/">Install HPCC
+Platforms and Setup ECL IDE</a></p></li>
+<li><p><a href="https://www.boqiangli.com/post/57ba8585/">Learning ECL
+Programming language</a></p></li>
+<li><p><a href="https://www.boqiangli.com/post/4a752ce/">Debug ECL
+programming</a></p></li>
+<li><p><a href="https://www.boqiangli.com/post/4e995520/">numpy() is
+only available when eager execution is enabled in TensorFlow2 and its
+solution</a></p></li>
+<li><p><a href="https://www.boqiangli.com/post/4152bed9/">Solve the
+problem that TensorFlow cannot find the GPU in HPCC Systems</a></p></li>
+<li><p><a href="https://www.boqiangli.com/post/e104d58f/">Adjust the
+number of nodes in HPCC Systems</a></p></li>
+<li><p><a href="https://www.boqiangli.com/post/dc14f366/">Calculate the
+execution time of operations in ECL</a></p></li>
+<li><p><a href="https://www.boqiangli.com/post/753b6e6d/">Upload images
+to HPCC Systems</a></p></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/HPCC-Systems/" rel="tag"><i class="fa fa-tag"></i> HPCC Systems</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/753b6e6d/" rel="prev" title="Upload images to HPCC Systems">
+                  <i class="fa fa-chevron-left"></i> Upload images to HPCC Systems
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Boqiang</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.14.2/algoliasearch-lite.umd.js" integrity="sha256-dImjLPUsG/6p3+i7gVKBiDM8EemJAhQ0VvkRK2pVsQY=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.46.3/instantsearch.production.min.js" integrity="sha256-TDBtvQ4sIGgJS5bk8VOKto+yvrblCB/JxE/9odR5u+M=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"en-US","enable":true,"serverURL":"waline.boqiangli.com","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":false,"pageview":true,"libUrl":"https://unpkg.com/@waline/client@v2/dist/waline.js","locale":{"placeholder":"Welcome to comment"},"emoji":null,"meta":["nick","mail"],"wordLimit":0,"login":"enable","pageSize":10,"el":"#waline","comment":true,"path":"/post/9be428e8/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>
